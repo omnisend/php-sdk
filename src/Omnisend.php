@@ -284,7 +284,7 @@ class Omnisend
                 "statusCode" => 500,
             );
         } else {
-            if ($this->$numberOfCurlRepeats == 1 && ($status == 408 || $status == 429 || $status == 503)) {
+            if ($this->numberOfCurlRepeats == 1 && ($status == 408 || $status == 429 || $status == 503)) {
                 $result = self::omnisendApi($link, $endpoint, $fields);
             } elseif ($status >= 200 && $status < 300) {
                 if ($response && !empty($response)) {
@@ -317,7 +317,7 @@ class Omnisend
                         $this->lastError['fields'] = $responseData['fields'] ? $responseData['fields'] : null;
                     }
                 }
-                $this->$numberOfCurlRepeats = 0;
+                $this->numberOfCurlRepeats = 0;
             }
         }
 
