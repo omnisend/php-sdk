@@ -6,7 +6,7 @@
  * This wrapper: https://github.com/omnisend/php-sdk
  *
  * @author  Omnisend
- * @version 1.0
+ * @version 1.1
  */
 
 class Omnisend
@@ -18,7 +18,7 @@ class Omnisend
     private $verifySSL = true;
     private $lastError = array();
     private $useCurl = true;
-    private $version = "1.0";
+    private $version = "1.1";
 
     public function __construct($apiKey, $options = array())
     {
@@ -218,7 +218,7 @@ class Omnisend
         if ($this->useCurl) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $link);
-            curl_setopt($ch, CURLOPT_USERAGENT, 'Omnisend/PHP-SDK/1.0');
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Omnisend/PHP-SDK/1.1');
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_VERBOSE, false);
@@ -284,7 +284,7 @@ class Omnisend
                 "statusCode" => 500,
             );
         } else {
-            if ($this->$numberOfCurlRepeats == 1 && ($status == 408 || $status == 429 || $status == 503)) {
+            if ($this->numberOfCurlRepeats == 1 && ($status == 408 || $status == 429 || $status == 503)) {
                 $result = self::omnisendApi($link, $endpoint, $fields);
             } elseif ($status >= 200 && $status < 300) {
                 if ($response && !empty($response)) {
@@ -317,7 +317,7 @@ class Omnisend
                         $this->lastError['fields'] = $responseData['fields'] ? $responseData['fields'] : null;
                     }
                 }
-                $this->$numberOfCurlRepeats = 0;
+                $this->numberOfCurlRepeats = 0;
             }
         }
 
