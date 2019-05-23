@@ -314,7 +314,7 @@ class Omnisend
                     $responseData = json_decode($response, true);
                     if (json_last_error() === JSON_ERROR_NONE) {
                         $this->lastError['error'] = $responseData['error'] ? $responseData['error'] : $this->lastError['error'];
-                        $this->lastError['fields'] = $responseData['fields'] ? $responseData['fields'] : null;
+                        $this->lastError['fields'] = !empty($responseData['fields']) ? $responseData['fields'] : null;
                     }
                 }
                 $this->numberOfCurlRepeats = 0;
