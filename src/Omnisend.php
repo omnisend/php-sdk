@@ -103,7 +103,7 @@ class Omnisend
     public function push($endpoint, $fields = array(), $queryParams = array())
     {
         $result = $this->post($endpoint, $fields, $queryParams);
-        if (!$result && !empty($fields) && !$this->lastError['fields']) {
+        if (!$result && !empty($fields) && empty($this->lastError['fields'])) {
             $id = "";
             switch (true) {
                 case $endpoint == "products" && array_key_exists('productID', $fields):
@@ -285,7 +285,7 @@ class Omnisend
             );
         } else {
             if ($this->numberOfCurlRepeats == 1 && ($status == 408 || $status == 429 || $status == 503)) {
-                $result = self::omnisendApi($link, $endpoint, $fields);
+                $result = self::omnisendApi($endpoint, $method, $fields, $queryParams);
             } elseif ($status >= 200 && $status < 300) {
                 if ($response && !empty($response)) {
                     return json_decode($response, true);
