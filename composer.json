@@ -1,16 +1,16 @@
 {
-    "name": "omnisend/php-sdk",
-    "description": "Simple to use Omnisend API v3 wrapper",
-    "type": "library",
-    "version": "1.1",
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=5.3.0",
-        "ext-curl": "*"
-    },
-    "autoload": {
-        "psr-0": {
-            "Omnisend": "src/"
-        }
+  "name": "omnisend/php-sdk",
+  "description": "Simple to use Omnisend API v3 wrapper",
+  "type": "library",
+  "version": "1.2",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.3.0",
+    "ext-curl": "*"
+  },
+  "autoload": {
+    "psr-0": {
+      "Omnisend": "src/"
     }
+  }
 }
