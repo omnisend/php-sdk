@@ -69,7 +69,7 @@ class Omnisend
         return "<script type=\"text/javascript\">
         //OMNISEND-SNIPPET-SOURCE-CODE-V1
         window.omnisend = window.omnisend || [];
-        omnisend.push([\"accountID\", \"" . substr($this->apiKey, 0, strpos($this->apiKey, '-')) . "\");
+        omnisend.push([\"accountID\", \"" . substr($this->apiKey, 0, strpos($this->apiKey, '-')) . "\"]);
         !function(){var e=document.createElement(\"script\");e.type=\"text/javascript\",e.async=!0,e.src=\"https://omnisrc.com/inshop/launcher.js\";var t=document.getElementsByTagName(\"script\")[0];t.parentNode.insertBefore(e,t)}();
     </script>\n";
     }
