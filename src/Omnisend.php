@@ -218,7 +218,7 @@ class Omnisend
         if ($this->useCurl) {
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $link);
-            curl_setopt($ch, CURLOPT_USERAGENT, 'Omnisend/PHP-SDK/1.2');
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Omnisend/PHP-SDK/' . $this->version);
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_VERBOSE, false);
