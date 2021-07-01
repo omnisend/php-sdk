@@ -11,14 +11,14 @@
 
 class Omnisend
 {
-    private $apiKey;
-    private $apiUrl = 'https://api.omnisend.com/v3/';
-    private $timeout;
-    private $numberOfCurlRepeats = 0;
-    private $verifySSL = true;
-    private $lastError = array();
-    private $useCurl = true;
-    private $version = "1.2";
+    protected $apiKey;
+    protected $apiUrl = 'https://api.omnisend.com/v3/';
+    protected $timeout;
+    protected $numberOfCurlRepeats = 0;
+    protected $verifySSL = true;
+    protected $lastError = array();
+    protected $useCurl = true;
+    protected $version = "1.2";
 
     public function __construct($apiKey, $options = array())
     {
@@ -191,7 +191,7 @@ class Omnisend
         return $this->omnisendApi($endpoint, 'DELETE', '', $queryParams);
     }
 
-    private function omnisendApi($endpoint, $method = "POST", $fields = array(), $queryParams = array())
+    protected function omnisendApi($endpoint, $method = "POST", $fields = array(), $queryParams = array())
     {
         $this->numberOfCurlRepeats++;
         $this->lastError = array();
@@ -285,7 +285,7 @@ class Omnisend
             );
         } else {
             if ($this->numberOfCurlRepeats == 1 && ($status == 408 || $status == 429 || $status == 503)) {
-                $result = self::omnisendApi($endpoint, $method, $fields, $queryParams);
+                $result = $this->omnisendApi($endpoint, $method, $fields, $queryParams);
             } elseif ($status >= 200 && $status < 300) {
                 if ($response && !empty($response)) {
                     return json_decode($response, true);
