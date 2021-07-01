@@ -11,14 +11,14 @@
 
 class Omnisend
 {
-    private $apiKey;
-    private $apiUrl = 'https://api.omnisend.com/v3/';
-    private $timeout;
-    private $numberOfCurlRepeats = 0;
-    private $verifySSL = true;
-    private $lastError = array();
-    private $useCurl = true;
-    private $version = "1.2";
+    protected $apiKey;
+    protected $apiUrl = 'https://api.omnisend.com/v3/';
+    protected $timeout;
+    protected $numberOfCurlRepeats = 0;
+    protected $verifySSL = true;
+    protected $lastError = array();
+    protected $useCurl = true;
+    protected $version = "1.2";
 
     public function __construct($apiKey, $options = array())
     {
